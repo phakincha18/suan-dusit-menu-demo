@@ -33,10 +33,12 @@ const TAGS={signature:['AP-01','AP-02','HS-01','CU-01'],mustTry:['NO-01','OD-01'
 const PHOTO_DIR='assets/food/';
 const PHOTO_EXT={};
 const photoPath=id=>PHOTO_DIR+id+'.'+(PHOTO_EXT[id]||'jpg');
+/* Printed on the receipt screen. Check this matches the restaurant's registered Tax ID. */
+const SHOP={taxId:'0992000163744'};
 const dic={
- th:{orderFood:'สั่งอาหาร',menuSubtitle:'เลือกเมนูโปรดของคุณได้เลย',viewCart:'ดูตะกร้า',priceNote:'ราคาอาหารยังไม่รวมภาษีมูลค่าเพิ่มและค่าบริการ',cartTitle:'ตะกร้าอาหาร',yourOrder:'รายการอาหารของคุณ',checkOrder:'ตรวจสอบรายการก่อนยืนยันการสั่งอาหาร',placeOrder:'ยืนยันและส่งออเดอร์',moreFood:'สั่งอาหารเพิ่ม',recommended:'เมนูแนะนำ',search:'ค้นหาเมนูอาหาร / Search menu',menuCount:'เมนู',noResult:'ไม่พบเมนูอาหาร',noResultSub:'ลองค้นหาด้วยชื่ออื่นหรือเลือกหมวดหมู่',extraNote:'รายละเอียดเพิ่มเติม',notePlaceholder:'เช่น ไม่ใส่ผักชี ไม่ใส่หอมใหญ่',quantity:'จำนวน',addCart:'เพิ่มลงตะกร้า',saveEdit:'บันทึกการแก้ไข',cancel:'ยกเลิก',edit:'แก้ไข',remove:'ลบ',table:'โต๊ะ',noCart:'ยังไม่มีรายการอาหาร',noCartSub:'กลับไปเลือกเมนูที่ต้องการได้เลย',orderEmpty:'กรุณาเลือกอาหารก่อน',note:'หมายเหตุ',added:'เพิ่มอาหารลงตะกร้าแล้ว',sent:'ส่งออเดอร์แล้ว',loading:'กำลังส่ง...',orderHistory:'ประวัติการสั่งอาหาร',pastOrders:'รายการที่เคยสั่ง',historyHint:'รวมรายการอาหารทั้งหมดที่คุณสั่งจากอุปกรณ์นี้',historyPrivacy:'แสดงออเดอร์ที่สั่งจากอุปกรณ์นี้เท่านั้น เพื่อไม่เปิดเผยรายการของลูกค้าคนอื่นที่ใช้โต๊ะเดียวกัน',noHistory:'ยังไม่มีประวัติการสั่งอาหาร',noHistorySub:'เมื่อส่งคำสั่งซื้อ รายการจะปรากฏที่หน้านี้',timePlaced:'สั่งเมื่อ',orderNo:'คำสั่งซื้อ',receiptTitle:'ใบเสร็จรับเงิน',combinedReceipt:'ใบเสร็จรวมทุกออเดอร์',ordersUnit:'ออเดอร์',dateLabel:'วันที่',colItem:'รายการ',colAmount:'จำนวนเงิน',thanks:'ขอบคุณที่ใช้บริการ',orderPlaced:'ส่งออเดอร์เรียบร้อยแล้ว',grandTotal:'ยอดรวมสุทธิ',foodPrice:'ราคาอาหาร',vat:'ภาษีมูลค่าเพิ่ม',serviceCharge:'ค่าบริการ',fontSize:'ขนาดตัวอักษร',font_s:'เล็ก',font_m:'กลาง',font_l:'ใหญ่',viewReceipt:'ดูใบเสร็จ',itemsUnit:'รายการ'},
- en:{orderFood:'Order Food',menuSubtitle:'Choose your favorites',viewCart:'View Cart',priceNote:'Menu prices exclude VAT and service charge',cartTitle:'Your Cart',yourOrder:'Your order',checkOrder:'Please check items before confirming',placeOrder:'Confirm & Send Order',moreFood:'Order More',recommended:'Recommended',search:'Search dishes / ค้นหาเมนูอาหาร',menuCount:'items',noResult:'No dishes found',noResultSub:'Try another search or category',extraNote:'Additional Notes',notePlaceholder:'e.g. No cilantro, no onion',quantity:'Quantity',addCart:'Add to Cart',saveEdit:'Save Changes',cancel:'Cancel',edit:'Edit',remove:'Remove',table:'Table',noCart:'Your cart is empty',noCartSub:'Go back and choose some food',orderEmpty:'Please select food first',note:'Note',added:'Added to cart',sent:'Order sent',loading:'Sending...',orderHistory:'Order History',pastOrders:'Your Previous Orders',historyHint:'All dishes you have ordered from this device',historyPrivacy:'Orders from this device only. Other guests’ orders at the same table are not shown.',noHistory:'No orders yet',noHistorySub:'Orders you submit will appear here',timePlaced:'Placed',orderNo:'Order',receiptTitle:'Receipt',combinedReceipt:'Combined Receipt',ordersUnit:'orders',dateLabel:'Date',colItem:'ITEM',colAmount:'AMOUNT',thanks:'Thank you for dining with us',orderPlaced:'Order sent successfully',grandTotal:'Grand Total',foodPrice:'Subtotal',vat:'VAT',serviceCharge:'Service Charge',fontSize:'Text size',font_s:'Small',font_m:'Medium',font_l:'Large',viewReceipt:'View Receipt',itemsUnit:'items'},
- zh:{orderFood:'点餐',menuSubtitle:'选择您喜爱的菜品',viewCart:'查看购物车',priceNote:'菜品价格不含增值税及服务费',cartTitle:'购物车',yourOrder:'您的订单',checkOrder:'确认下单前请核对菜品',placeOrder:'确认并提交订单',moreFood:'继续点餐',recommended:'推荐菜品',search:'搜索菜品 / Search menu',menuCount:'道菜',noResult:'未找到菜品',noResultSub:'请尝试其他关键词或分类',extraNote:'备注',notePlaceholder:'例如：不要香菜、不要洋葱',quantity:'数量',addCart:'加入购物车',saveEdit:'保存修改',cancel:'取消',edit:'修改',remove:'删除',table:'桌号',noCart:'购物车是空的',noCartSub:'请返回菜单选择菜品',orderEmpty:'请先选择菜品',note:'备注',added:'已加入购物车',sent:'订单已提交',loading:'提交中...',orderHistory:'点餐记录',pastOrders:'历史订单',historyHint:'您在本设备上点过的所有菜品',historyPrivacy:'仅显示本设备下的订单，不会显示同桌其他客人的订单。',noHistory:'暂无点餐记录',noHistorySub:'提交订单后，记录会显示在这里',timePlaced:'下单时间',orderNo:'订单',receiptTitle:'收据',combinedReceipt:'合并收据',ordersUnit:'笔订单',dateLabel:'日期',colItem:'菜品',colAmount:'金额',thanks:'感谢惠顾，欢迎再次光临',orderPlaced:'订单提交成功',grandTotal:'应付总额',foodPrice:'菜品小计',vat:'增值税',serviceCharge:'服务费',fontSize:'字体大小',font_s:'小',font_m:'中',font_l:'大',viewReceipt:'查看收据',itemsUnit:'项'}
+ th:{orderFood:'สั่งอาหาร',menuSubtitle:'เลือกเมนูโปรดของคุณได้เลย',viewCart:'ดูตะกร้า',priceNote:'ราคาอาหารยังไม่รวมภาษีมูลค่าเพิ่มและค่าบริการ',cartTitle:'ตะกร้าอาหาร',yourOrder:'รายการอาหารของคุณ',checkOrder:'ตรวจสอบรายการก่อนยืนยันการสั่งอาหาร',placeOrder:'ยืนยันและส่งออเดอร์',moreFood:'สั่งอาหารเพิ่ม',recommended:'เมนูแนะนำ',search:'ค้นหาเมนูอาหาร / Search menu',menuCount:'เมนู',noResult:'ไม่พบเมนูอาหาร',noResultSub:'ลองค้นหาด้วยชื่ออื่นหรือเลือกหมวดหมู่',extraNote:'รายละเอียดเพิ่มเติม',notePlaceholder:'เช่น ไม่ใส่ผักชี ไม่ใส่หอมใหญ่',quantity:'จำนวน',addCart:'เพิ่มลงตะกร้า',saveEdit:'บันทึกการแก้ไข',cancel:'ยกเลิก',edit:'แก้ไข',remove:'ลบ',table:'โต๊ะ',noCart:'ยังไม่มีรายการอาหาร',noCartSub:'กลับไปเลือกเมนูที่ต้องการได้เลย',orderEmpty:'กรุณาเลือกอาหารก่อน',note:'หมายเหตุ',added:'เพิ่มอาหารลงตะกร้าแล้ว',sent:'ส่งออเดอร์แล้ว',loading:'กำลังส่ง...',orderHistory:'ประวัติการสั่งอาหาร',pastOrders:'รายการที่เคยสั่ง',historyHint:'รวมรายการอาหารทั้งหมดที่คุณสั่งจากอุปกรณ์นี้',historyPrivacy:'แสดงออเดอร์ที่สั่งจากอุปกรณ์นี้เท่านั้น เพื่อไม่เปิดเผยรายการของลูกค้าคนอื่นที่ใช้โต๊ะเดียวกัน',noHistory:'ยังไม่มีประวัติการสั่งอาหาร',noHistorySub:'เมื่อส่งคำสั่งซื้อ รายการจะปรากฏที่หน้านี้',timePlaced:'สั่งเมื่อ',orderNo:'คำสั่งซื้อ',receiptTitle:'ใบเสร็จรับเงิน',combinedReceipt:'ใบเสร็จรวมทุกออเดอร์',ordersUnit:'ออเดอร์',dateLabel:'วันที่',colQty:'จำนวน',colItem:'รายการ',colAmount:'ราคา',taxInvoice:'ใบกำกับภาษีอย่างย่อ (ABB)',taxId:'เลขประจำตัวผู้เสียภาษี',abbNo:'เลขที่ใบกำกับภาษี',grandTotalVatInc:'ยอดรวมสุทธิ (รวม VAT)',thanks:'ขอบคุณที่ใช้บริการ',orderPlaced:'ส่งออเดอร์เรียบร้อยแล้ว',grandTotal:'ยอดรวมสุทธิ',foodPrice:'ราคาอาหาร',vat:'ภาษีมูลค่าเพิ่ม',serviceCharge:'ค่าบริการ',fontSize:'ขนาดตัวอักษร',font_s:'เล็ก',font_m:'กลาง',font_l:'ใหญ่',viewReceipt:'ดูใบเสร็จ',itemsUnit:'รายการ'},
+ en:{orderFood:'Order Food',menuSubtitle:'Choose your favorites',viewCart:'View Cart',priceNote:'Menu prices exclude VAT and service charge',cartTitle:'Your Cart',yourOrder:'Your order',checkOrder:'Please check items before confirming',placeOrder:'Confirm & Send Order',moreFood:'Order More',recommended:'Recommended',search:'Search dishes / ค้นหาเมนูอาหาร',menuCount:'items',noResult:'No dishes found',noResultSub:'Try another search or category',extraNote:'Additional Notes',notePlaceholder:'e.g. No cilantro, no onion',quantity:'Quantity',addCart:'Add to Cart',saveEdit:'Save Changes',cancel:'Cancel',edit:'Edit',remove:'Remove',table:'Table',noCart:'Your cart is empty',noCartSub:'Go back and choose some food',orderEmpty:'Please select food first',note:'Note',added:'Added to cart',sent:'Order sent',loading:'Sending...',orderHistory:'Order History',pastOrders:'Your Previous Orders',historyHint:'All dishes you have ordered from this device',historyPrivacy:'Orders from this device only. Other guests’ orders at the same table are not shown.',noHistory:'No orders yet',noHistorySub:'Orders you submit will appear here',timePlaced:'Placed',orderNo:'Order',receiptTitle:'Receipt',combinedReceipt:'Combined Receipt',ordersUnit:'orders',dateLabel:'Date',colQty:'QTY',colItem:'ITEM',colAmount:'AMOUNT',taxInvoice:'Tax Invoice (ABB)',taxId:'Tax ID',abbNo:'Tax Invoice No.',grandTotalVatInc:'Total (VAT Inc.)',thanks:'Thank you for dining with us',orderPlaced:'Order sent successfully',grandTotal:'Grand Total',foodPrice:'Subtotal',vat:'VAT',serviceCharge:'Service Charge',fontSize:'Text size',font_s:'Small',font_m:'Medium',font_l:'Large',viewReceipt:'View Receipt',itemsUnit:'items'},
+ zh:{orderFood:'点餐',menuSubtitle:'选择您喜爱的菜品',viewCart:'查看购物车',priceNote:'菜品价格不含增值税及服务费',cartTitle:'购物车',yourOrder:'您的订单',checkOrder:'确认下单前请核对菜品',placeOrder:'确认并提交订单',moreFood:'继续点餐',recommended:'推荐菜品',search:'搜索菜品 / Search menu',menuCount:'道菜',noResult:'未找到菜品',noResultSub:'请尝试其他关键词或分类',extraNote:'备注',notePlaceholder:'例如：不要香菜、不要洋葱',quantity:'数量',addCart:'加入购物车',saveEdit:'保存修改',cancel:'取消',edit:'修改',remove:'删除',table:'桌号',noCart:'购物车是空的',noCartSub:'请返回菜单选择菜品',orderEmpty:'请先选择菜品',note:'备注',added:'已加入购物车',sent:'订单已提交',loading:'提交中...',orderHistory:'点餐记录',pastOrders:'历史订单',historyHint:'您在本设备上点过的所有菜品',historyPrivacy:'仅显示本设备下的订单，不会显示同桌其他客人的订单。',noHistory:'暂无点餐记录',noHistorySub:'提交订单后，记录会显示在这里',timePlaced:'下单时间',orderNo:'订单',receiptTitle:'收据',combinedReceipt:'合并收据',ordersUnit:'笔订单',dateLabel:'日期',colQty:'数量',colItem:'菜品',colAmount:'金额',taxInvoice:'简易税务发票 (ABB)',taxId:'税号',abbNo:'发票号码',grandTotalVatInc:'应付总额（含增值税）',thanks:'感谢惠顾，欢迎再次光临',orderPlaced:'订单提交成功',grandTotal:'应付总额',foodPrice:'菜品小计',vat:'增值税',serviceCharge:'服务费',fontSize:'字体大小',font_s:'小',font_m:'中',font_l:'大',viewReceipt:'查看收据',itemsUnit:'项'}
 };
 const L=(th,en,zh)=>state.lang==='en'?en:state.lang==='zh'?zh:th;
 const t = key => dic[state.lang][key] ?? key;
@@ -44,7 +46,8 @@ const name = item => (state.lang==='en'? item.en : state.lang==='zh'? (ZH.items[
 const subName = item => (state.lang==='th'? item.en : item.th);
 const catName = (cat,en) => (state.lang==='th'? cat : state.lang==='zh'? (ZH.categories[cat]||en||cat) : (en||cat));
 const price = number => '฿'+Number(number || 0).toLocaleString('en-US',{maximumFractionDigits:2});
-const money = number => '฿'+Number(number || 0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const amount = number => Number(number || 0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const money = number => '฿'+amount(number);
 const round2 = n => Math.round((Number(n||0)+Number.EPSILON)*100)/100;
 /* Menu prices EXCLUDE VAT and service charge. Both are worked out on the food subtotal and added on top:
    VAT = 7% of food, Service Charge = 10% of food, Grand Total = food + VAT + service charge.
@@ -101,9 +104,9 @@ function refreshLang(){
 function setLang(lang){state.lang=lang; refreshLang();}
 /* ---- Accessibility: text size (S = original, M, L). Persisted per device; CSS scales via --font-scale. ---- */
 const FONT_SIZES=['s','m','l'],FONT_KEY='sdp_font_size';
-let fontSize=(()=>{try{const v=localStorage.getItem(FONT_KEY);return FONT_SIZES.includes(v)?v:'s';}catch{return 's';}})();
+let fontSize=(()=>{try{const v=localStorage.getItem(FONT_KEY);return FONT_SIZES.includes(v)?v:'m';}catch{return 'm';}})(); /* default: Medium */
 function applyFontSize(){
- if(fontSize==='s')delete document.documentElement.dataset.fontSize;else document.documentElement.dataset.fontSize=fontSize;
+ document.documentElement.dataset.fontSize=fontSize;
  const label=t('fontSize')+': '+t('font_'+fontSize);
  $('fontToggle').setAttribute('aria-label',label);$('fontToggle').title=label;
 }
@@ -238,7 +241,8 @@ function localDemoOrder(items){
  const id='DEMO-'+pad(stamp.getFullYear()%100)+pad(stamp.getMonth()+1)+pad(stamp.getDate())+'-'+Math.random().toString(36).slice(2,8).toUpperCase();
  const lines=items.map((it,i)=>{const item=getItem(it.id),v=variantsOf(item).find(x=>x.label===it.variant)||variantsOf(item)[0]||{price:0};
   return {id:it.id,nameTh:item?.th||it.id,nameEn:item?.en||it.id,variant:it.variant,price:Number(v.price||0),quantity:it.quantity,note:it.note||'',lineId:i+1,status:'received'};});
- return {id,table,created_at:stamp.toISOString(),status:'received',payment_status:'unpaid',source:'qr',subtotal:round2(lines.reduce((n,l)=>n+l.price*l.quantity,0)),items:lines,_demo:true};
+ let seq=Number(load('sdp_demo_receipt_seq',0))+1;save('sdp_demo_receipt_seq',seq);
+ return {id,receipt_no:String(seq).padStart(12,'0'),table,created_at:stamp.toISOString(),status:'received',payment_status:'unpaid',source:'qr',subtotal:round2(lines.reduce((n,l)=>n+l.price*l.quantity,0)),items:lines,_demo:true};
 }
 async function placeOrder(){
  if(state.tableClosed)return;
@@ -280,7 +284,10 @@ function lineExtras(it){
 const linePrice=it=>Number(it.price ?? getItem(it.id)?.variants[0]?.price ?? 0);
 const billableLines=order=>(order?.status==='cancelled'?[]:(order?.items||[]).filter(it=>it.status!=='cancelled'));
 const orderTotal=order=>billableLines(order).reduce((n,it)=>n+linePrice(it)*(it.quantity||1),0);
-function dateText(s){const d=new Date(s);return !Number.isNaN(d.getTime())?new Intl.DateTimeFormat(state.lang==='th'?'th-TH':state.lang==='zh'?'zh-CN':'en-GB',{timeZone:'Asia/Bangkok',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(d):String(s||'');}
+/* All dates are numeric, Bangkok time, Gregorian year: 20/11/2026-12:47:17 */
+function dateText(s){const d=new Date(s);if(Number.isNaN(d.getTime()))return String(s||'');
+ const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Bangkok',calendar:'gregory',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(d).map(x=>[x.type,x.value]));
+ return `${p.day}/${p.month}/${p.year}-${p.hour}:${p.minute}:${p.second}`;}
 function rememberOrder(order){
  if(!order||!order.id)return;
  state.history=[order,...state.history.filter(o=>String(o.id)!==String(order.id))].slice(0,60);
@@ -304,13 +311,17 @@ function renderReceipt(){
  const lines=combined?mergeLines(orders):billableLines(orders[0]);
  const split=billSplit(lines.reduce((n,it)=>n+linePrice(it)*(it.quantity||1),0));
  $('receiptHeading').textContent=t(combined?'combinedReceipt':'orderPlaced');
+ $('receiptTaxId').textContent=SHOP.taxId;
+ const nos=orders.map(o=>o.receipt_no).filter(Boolean).sort();
+ $('receiptMetaAbb').textContent=!nos.length?'-':nos.length===1?nos[0]:nos[0]+' – '+nos[nos.length-1];
  $('receiptMetaTable').textContent=table;
- $('receiptMetaOrder').textContent=combined?orders.length+' '+t('ordersUnit'):'#'+String(orders[0].id);
+ $('receiptMetaOrder').textContent=combined?orders.length+' '+t('ordersUnit'):String(orders[0].id);
  $('receiptMetaDate').textContent=dateText(combined?new Date().toISOString():orders[0].created_at);
- $('receiptItems').innerHTML=lines.map(it=>{const qty=it.quantity||1,extra=lineExtras(it);return `<div class="receipt-line"><div class="receipt-line-main"><b>${esc(qty)} × ${lineName(it)}</b>${extra?`<small>${extra}</small>`:''}</div><span>${money(linePrice(it)*qty)}</span></div>`;}).join('');
- $('receiptFood').textContent=money(split.subtotal);
- $('receiptVat').textContent=money(split.vat);
- $('receiptService').textContent=money(split.service);
+ $('receiptItems').innerHTML=lines.map(it=>{const qty=it.quantity||1,extra=lineExtras(it);return `<div class="receipt-line"><span class="rl-qty">${esc(qty)}</span><div class="rl-name"><b>${lineName(it)}</b>${extra?`<small>${extra}</small>`:''}</div><span class="rl-amt">${amount(linePrice(it)*qty)}</span></div>`;}).join('');
+ /* like a printed receipt: plain amounts, baht sign only on the total */
+ $('receiptFood').textContent=amount(split.subtotal);
+ $('receiptVat').textContent=amount(split.vat);
+ $('receiptService').textContent=amount(split.service);
  $('receiptGrand').textContent=money(split.grandTotal);
 }
 function renderHistory(){

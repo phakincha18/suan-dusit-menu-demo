@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"/>
-  <link rel="stylesheet" href="styles.css?v=20261120-fontscale"/>
-  <script>try{var f=localStorage.getItem('sdp_font_size');if(f==='m'||f==='l')document.documentElement.dataset.fontSize=f;}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css?v=20261120-receipt"/>
+  <script>try{var f=localStorage.getItem('sdp_font_size');document.documentElement.dataset.fontSize=(f==='s'||f==='l')?f:'m';}catch(e){}</script>
 </head>
 <body>
   <main class="phone" id="phone" aria-label="The Suan Dusit Place mobile web application">
@@ -106,27 +106,29 @@
             <div class="receipt-head">
               <img src="assets/gold-logo.png" class="receipt-logo" alt="" draggable="false"/>
               <div class="receipt-shop">The Suan Dusit Place</div>
-              <div class="receipt-kind" data-i18n="receiptTitle">ใบเสร็จรับเงิน</div>
+              <div class="receipt-kind" data-i18n="taxInvoice">ใบกำกับภาษีอย่างย่อ (ABB)</div>
+              <div class="receipt-taxid"><span data-i18n="taxId">เลขประจำตัวผู้เสียภาษี</span> <b id="receiptTaxId">-</b></div>
             </div>
             <div class="receipt-rule"></div>
             <dl class="receipt-meta">
-              <div><dt data-i18n="table">โต๊ะ</dt><dd id="receiptMetaTable">03</dd></div>
-              <div><dt data-i18n="orderNo">คำสั่งซื้อ</dt><dd id="receiptMetaOrder">#0001</dd></div>
+              <div><dt data-i18n="abbNo">เลขที่ใบกำกับภาษี</dt><dd id="receiptMetaAbb">-</dd></div>
               <div><dt data-i18n="dateLabel">วันที่</dt><dd id="receiptMetaDate">-</dd></div>
+              <div><dt data-i18n="table">โต๊ะ</dt><dd id="receiptMetaTable">03</dd></div>
+              <div><dt data-i18n="orderNo">คำสั่งซื้อ</dt><dd id="receiptMetaOrder">-</dd></div>
             </dl>
             <div class="receipt-rule"></div>
-            <div class="receipt-cols"><span data-i18n="colItem">รายการ</span><span data-i18n="colAmount">จำนวนเงิน</span></div>
+            <div class="receipt-cols"><span class="rc-qty" data-i18n="colQty">จำนวน</span><span class="rc-item" data-i18n="colItem">รายการ</span><span class="rc-amt" data-i18n="colAmount">ราคา</span></div>
             <div class="receipt-items" id="receiptItems"></div>
-            <div class="receipt-rule double"></div>
-            <div class="receipt-totals">
-              <div class="receipt-row"><span data-i18n="foodPrice">ราคาอาหาร</span><b id="receiptFood">฿0.00</b></div>
-              <div class="receipt-row"><span data-i18n="vat">ภาษีมูลค่าเพิ่ม</span><b id="receiptVat">฿0.00</b></div>
-              <div class="receipt-row"><span data-i18n="serviceCharge">ค่าบริการ</span><b id="receiptService">฿0.00</b></div>
-              <div class="receipt-rule"></div>
-              <div class="receipt-row receipt-grand"><span data-i18n="grandTotal">ยอดรวมสุทธิ</span><b id="receiptGrand">฿0.00</b></div>
-            </div>
             <div class="receipt-rule"></div>
-            <div class="receipt-thanks" data-i18n="thanks">ขอบคุณที่ใช้บริการ</div>
+            <div class="receipt-totals">
+              <div class="receipt-row"><span data-i18n="foodPrice">ราคาอาหาร</span><b id="receiptFood">0.00</b></div>
+              <div class="receipt-row"><span data-i18n="vat">ภาษีมูลค่าเพิ่ม</span><b id="receiptVat">0.00</b></div>
+              <div class="receipt-row"><span data-i18n="serviceCharge">ค่าบริการ</span><b id="receiptService">0.00</b></div>
+            </div>
+            <div class="receipt-rule double"></div>
+            <div class="receipt-row receipt-grand"><span data-i18n="grandTotalVatInc">ยอดรวมสุทธิ (รวม VAT)</span><b id="receiptGrand">0.00</b></div>
+            <div class="receipt-rule"></div>
+            <div class="receipt-thanks">*** <span data-i18n="thanks">ขอบคุณที่ใช้บริการ</span> ***</div>
             <div class="receipt-barcode" aria-hidden="true"></div>
           </div>
         </div>
@@ -169,6 +171,6 @@
   <script src="menu-data.js?v=20261120"></script>
   <script src="menu-zh.js?v=20261120"></script>
   <script>window.SDP_STATIC_DEMO=true;</script>
-  <script src="app.js?v=20261120-charges"></script>
+  <script src="app.js?v=20261120-receipt"></script>
 </body>
 </html>

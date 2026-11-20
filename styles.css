@@ -49,14 +49,17 @@
   --bar-h:calc(60px + env(safe-area-inset-top,0px));
   --gutter:20px;
   /* accessibility: every font-size below is multiplied by --font-scale (set by the A− / A+ control) */
-  --font-scale:1;
+  --font-scale:1.15;       /* default = Medium (2nd of 3) */
 }
+html[data-font-size="s"]{--font-scale:1}
 html[data-font-size="m"]{--font-scale:1.15}
 html[data-font-size="l"]{--font-scale:1.3}
 
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0;height:100%}
+/* stop phone browsers from auto-enlarging text (the in-app Aa control handles text size) */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:var(--sans);font-size:calc(15px * var(--font-scale));line-height:1.55;color:var(--ink);background:var(--ivory);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;display:grid;place-items:center;overflow:hidden}
 button,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none;padding:0;touch-action:manipulation}
@@ -133,7 +136,9 @@ h1,h2,h3,p{margin:0}
 .table-pill{flex:none;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 10px;border-radius:var(--pill);background:var(--emerald);color:var(--ivory);font-size:13px;font-weight:700;white-space:nowrap}
 .table-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(198,156,109,.25)}
 .table-pill.light{background:var(--gold-tint);color:var(--gold-ink)}
-.bar-gap{flex:1}
+.bar-gap{flex:1;min-width:0}
+/* safety net: if a phone is narrower than expected, the table pill shrinks instead of pushing the cart off-screen */
+.menu-bar .table-pill{flex:0 1 auto;min-width:0;overflow:hidden}
 .lang-toggle{flex:none;display:flex;padding:3px;border-radius:var(--pill);background:var(--pearl);border:1px solid var(--hair)}
 .lang-toggle button{min-width:32px;height:32px;padding:0 6px;border-radius:var(--pill);font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--stone);transition:background .25s var(--ease),color .25s var(--ease)}
 .lang-toggle button.active{background:var(--emerald);color:var(--ivory)}
@@ -146,7 +151,7 @@ h1,h2,h3,p{margin:0}
 .font-btn .font-pips i:first-child,
 html[data-font-size="m"] .font-btn .font-pips i:nth-child(2),
 html[data-font-size="l"] .font-btn .font-pips i{background:var(--gold)}
-html[data-font-size] .font-btn{border-color:var(--gold-soft)}
+html[data-font-size="s"] .font-btn,html[data-font-size="l"] .font-btn{border-color:var(--gold-soft)}
 .font-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .cart-badge{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;padding:0 5px;border-radius:var(--pill);background:var(--terra);color:#fff;font-size:calc(11px * var(--font-scale));font-weight:700;line-height:19px;text-align:center;box-shadow:0 0 0 2px var(--ivory)}
 
@@ -351,32 +356,40 @@ html[data-font-size] .font-btn{border-color:var(--gold-soft)}
 .order-success-mark{width:64px;height:64px;display:grid;place-items:center;border-radius:50%;background:var(--emerald);color:var(--gold-soft);font-size:calc(28px * var(--font-scale));font-weight:700;box-shadow:var(--lift-dark),0 0 0 8px rgba(27,59,43,.08);animation:pop .5s var(--ease)}
 .status-main-heading{margin:16px 0 18px;font-family:var(--serif);font-weight:600;font-size:calc(25px * var(--font-scale));line-height:1.3;text-align:center}
 .receipt-wrap{width:100%}
-.receipt-card{position:relative;padding:22px 20px 18px;border-radius:var(--r-card);background:var(--pearl);border:1px solid var(--hair);box-shadow:var(--lift-2)}
-.receipt-head{display:flex;flex-direction:column;align-items:center;text-align:center}
-.receipt-logo{height:58px;width:auto}
-.receipt-shop{margin-top:6px;font-family:var(--serif);font-weight:600;font-size:calc(19px * var(--font-scale))}
-.receipt-kind{font-size:calc(12.5px * var(--font-scale));font-weight:600;letter-spacing:.04em;color:var(--stone)}
-.receipt-rule{height:0;margin:14px 0;border-top:1px dashed var(--hair)}
-.receipt-rule.double{border-top:3px double var(--hair)}
-.receipt-meta{display:grid;gap:5px;margin:0}
-.receipt-meta div{display:flex;justify-content:space-between;gap:12px;font-size:calc(13.5px * var(--font-scale))}
-.receipt-meta dt{color:var(--stone)}
-.receipt-meta dd{margin:0;font-weight:600;text-align:right;overflow-wrap:anywhere}
-.receipt-cols{display:flex;justify-content:space-between;font-size:calc(12px * var(--font-scale));font-weight:700;color:var(--stone);letter-spacing:.03em}
-.receipt-items{margin-top:6px}
-.receipt-line{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:7px 0;font-size:calc(14px * var(--font-scale))}
-.receipt-line-main b{font-weight:600}
-.receipt-line-main small{display:block;color:var(--stone);font-size:calc(12.5px * var(--font-scale))}
-.receipt-line>span{flex:none;font-weight:600}
-.receipt-row{display:flex;justify-content:space-between;gap:12px;padding:3px 0;font-size:calc(13.5px * var(--font-scale));color:var(--stone)}
-.receipt-row b{color:var(--ink);font-weight:600}
-.receipt-row.receipt-grand{font-size:calc(16px * var(--font-scale));color:var(--ink);font-weight:700}
+.receipt-card{position:relative;padding:20px 18px 16px;border-radius:6px;background:var(--pearl);border:1px solid var(--hair);box-shadow:var(--lift-2);
+  font-variant-numeric:tabular-nums lining-nums;font-feature-settings:'tnum' 1,'lnum' 1}
+/* thermal-paper feel: zig-zag tear edge at the bottom */
+.receipt-card::after{content:'';position:absolute;left:-1px;right:-1px;bottom:-9px;height:10px;background:linear-gradient(-45deg,transparent 6px,var(--pearl) 0) 0 0/12px 10px,linear-gradient(45deg,transparent 6px,var(--pearl) 0) 0 0/12px 10px}
+.receipt-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1px}
+.receipt-logo{height:52px;width:auto}
+.receipt-shop{margin-top:4px;font-family:var(--serif);font-weight:600;font-size:calc(18px * var(--font-scale))}
+.receipt-kind{margin-top:2px;font-size:calc(13px * var(--font-scale));font-weight:700;color:var(--ink)}
+.receipt-taxid{font-size:calc(12.5px * var(--font-scale));color:var(--stone)}
+.receipt-taxid b{color:var(--ink);font-weight:600;letter-spacing:.02em}
+.receipt-rule{height:0;margin:12px 0;border-top:1px dashed var(--stone-2)}
+.receipt-rule.double{border-top:3px double var(--stone-2)}
+.receipt-meta{display:grid;gap:3px;margin:0}
+.receipt-meta div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:calc(13px * var(--font-scale))}
+.receipt-meta dt{flex:none;color:var(--stone)}
+.receipt-meta dd{margin:0;font-weight:600;text-align:right;overflow-wrap:anywhere;letter-spacing:.01em}
+.receipt-cols,.receipt-line{display:grid;grid-template-columns:calc(42px * var(--font-scale)) minmax(0,1fr) auto;column-gap:6px}
+.receipt-cols{font-size:calc(11.5px * var(--font-scale));font-weight:700;color:var(--stone);letter-spacing:.03em;padding-bottom:4px;border-bottom:1px dashed var(--hair)}
+.receipt-cols .rc-amt,.receipt-line .rl-amt{text-align:right}
+.receipt-items{margin-top:2px}
+.receipt-line{align-items:start;padding:5px 0;font-size:calc(14px * var(--font-scale))}
+.receipt-line .rl-qty{font-weight:700}
+.receipt-line .rl-name b{font-weight:600}
+.receipt-line .rl-name small{display:block;color:var(--stone);font-size:calc(12px * var(--font-scale))}
+.receipt-line .rl-amt{font-weight:600;white-space:nowrap}
+.receipt-row{display:flex;justify-content:space-between;gap:12px;padding:2px 0;font-size:calc(13.5px * var(--font-scale));color:var(--stone)}
+.receipt-row b{color:var(--ink);font-weight:600;white-space:nowrap}
+.receipt-row.receipt-grand{align-items:baseline;font-size:calc(15px * var(--font-scale));color:var(--ink);font-weight:700}
 .receipt-row.receipt-grand b{font-size:calc(22px * var(--font-scale));font-weight:800}
-.receipt-row.receipt-net{color:var(--ink);font-weight:700}
-.receipt-note{margin-top:6px;font-size:calc(12px * var(--font-scale));color:var(--stone);text-align:center}
-.receipt-thanks{font-family:var(--serif);font-style:italic;font-size:calc(16px * var(--font-scale));text-align:center;color:var(--gold-ink)}
-.receipt-barcode{height:38px;margin:12px auto 0;width:72%;opacity:.75;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 13px)}
-.status-buttons .history-btn-small{flex:0 0 auto;padding:0 16px;font-size:calc(14.5px * var(--font-scale))}
+.receipt-thanks{font-size:calc(13px * var(--font-scale));font-weight:600;letter-spacing:.04em;text-align:center;color:var(--ink)}
+.receipt-barcode{height:34px;margin:10px auto 2px;width:72%;opacity:.75;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 13px)}
+/* two equal buttons: the main action never gets squeezed into 3 lines on narrow phones */
+.status-buttons>button{flex:1 1 0;min-width:0;padding:0 12px;text-align:center;line-height:1.25}
+.status-buttons .history-btn-small{font-size:calc(14.5px * var(--font-scale))}
 
 .history-orders{display:grid;gap:12px}
 .history-order-card{padding:16px 18px;border-radius:var(--r-card);background:var(--pearl);border:1px solid var(--hair);box-shadow:var(--lift)}
@@ -403,13 +416,13 @@ html[data-font-size] .font-btn{border-color:var(--gold-soft)}
   .lang-toggle button{min-width:28px;height:30px;padding:0 4px}
   .brand-btn img{height:34px}
   .table-pill{padding:0 10px 0 9px}
+  /* most Android phones are 360-393px wide: make room for the Aa button; history stays reachable from the menu row */
+  .menu-bar .history-top{display:none}
 }
 @media(max-width:359px){
   :root{--gutter:16px}
   .table-pill{padding:0 9px;font-size:12px}.table-pill::before{display:none}
   .menu-hero h1{font-size:calc(44px * var(--font-scale))}
-  /* very narrow phones: make room for the Aa text-size button; history stays reachable from the menu row */
-  .menu-bar .history-top{display:none}
 }
 @media(max-height:640px){
   .menu-hero{padding-top:16px}.menu-hero h1{font-size:calc(42px * var(--font-scale))}
