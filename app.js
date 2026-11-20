@@ -34,9 +34,9 @@ const PHOTO_DIR='assets/food/';
 const PHOTO_EXT={};
 const photoPath=id=>PHOTO_DIR+id+'.'+(PHOTO_EXT[id]||'jpg');
 const dic={
- th:{orderFood:'สั่งอาหาร',menuSubtitle:'เลือกเมนูโปรดของคุณได้เลย',viewCart:'ดูตะกร้า',priceNote:'ราคาอาหารยังไม่รวมภาษีมูลค่าเพิ่ม 7%',cartTitle:'ตะกร้าอาหาร',yourOrder:'รายการอาหารของคุณ',checkOrder:'ตรวจสอบรายการก่อนยืนยันการสั่งอาหาร',placeOrder:'ยืนยันและส่งออเดอร์',moreFood:'สั่งอาหารเพิ่ม',recommended:'เมนูแนะนำ',search:'ค้นหาเมนูอาหาร / Search menu',menuCount:'เมนู',noResult:'ไม่พบเมนูอาหาร',noResultSub:'ลองค้นหาด้วยชื่ออื่นหรือเลือกหมวดหมู่',extraNote:'รายละเอียดเพิ่มเติม',notePlaceholder:'เช่น ไม่ใส่ผักชี ไม่ใส่หอมใหญ่',quantity:'จำนวน',addCart:'เพิ่มลงตะกร้า',saveEdit:'บันทึกการแก้ไข',cancel:'ยกเลิก',edit:'แก้ไข',remove:'ลบ',table:'โต๊ะ',noCart:'ยังไม่มีรายการอาหาร',noCartSub:'กลับไปเลือกเมนูที่ต้องการได้เลย',orderEmpty:'กรุณาเลือกอาหารก่อน',note:'หมายเหตุ',added:'เพิ่มอาหารลงตะกร้าแล้ว',sent:'ส่งออเดอร์แล้ว',loading:'กำลังส่ง...',orderHistory:'ประวัติการสั่งอาหาร',pastOrders:'รายการที่เคยสั่ง',historyHint:'รวมรายการอาหารทั้งหมดที่คุณสั่งจากอุปกรณ์นี้',historyPrivacy:'แสดงออเดอร์ที่สั่งจากอุปกรณ์นี้เท่านั้น เพื่อไม่เปิดเผยรายการของลูกค้าคนอื่นที่ใช้โต๊ะเดียวกัน',noHistory:'ยังไม่มีประวัติการสั่งอาหาร',noHistorySub:'เมื่อส่งคำสั่งซื้อ รายการจะปรากฏที่หน้านี้',timePlaced:'สั่งเมื่อ',orderNo:'คำสั่งซื้อ',receiptTitle:'ใบเสร็จรับเงิน',combinedReceipt:'ใบเสร็จรวมทุกออเดอร์',ordersUnit:'ออเดอร์',dateLabel:'วันที่',colItem:'รายการ',colAmount:'จำนวนเงิน',thanks:'ขอบคุณที่ใช้บริการ',orderPlaced:'ส่งออเดอร์เรียบร้อยแล้ว',grandTotal:'ยอดรวมสุทธิ',foodPrice:'ราคาอาหาร',vat7:'ภาษีมูลค่าเพิ่ม 7%',viewReceipt:'ดูใบเสร็จ',itemsUnit:'รายการ'},
- en:{orderFood:'Order Food',menuSubtitle:'Choose your favorites',viewCart:'View Cart',priceNote:'Menu prices exclude 7% VAT',cartTitle:'Your Cart',yourOrder:'Your order',checkOrder:'Please check items before confirming',placeOrder:'Confirm & Send Order',moreFood:'Order More',recommended:'Recommended',search:'Search dishes / ค้นหาเมนูอาหาร',menuCount:'items',noResult:'No dishes found',noResultSub:'Try another search or category',extraNote:'Additional Notes',notePlaceholder:'e.g. No cilantro, no onion',quantity:'Quantity',addCart:'Add to Cart',saveEdit:'Save Changes',cancel:'Cancel',edit:'Edit',remove:'Remove',table:'Table',noCart:'Your cart is empty',noCartSub:'Go back and choose some food',orderEmpty:'Please select food first',note:'Note',added:'Added to cart',sent:'Order sent',loading:'Sending...',orderHistory:'Order History',pastOrders:'Your Previous Orders',historyHint:'All dishes you have ordered from this device',historyPrivacy:'Orders from this device only. Other guests’ orders at the same table are not shown.',noHistory:'No orders yet',noHistorySub:'Orders you submit will appear here',timePlaced:'Placed',orderNo:'Order',receiptTitle:'Receipt',combinedReceipt:'Combined Receipt',ordersUnit:'orders',dateLabel:'Date',colItem:'ITEM',colAmount:'AMOUNT',thanks:'Thank you for dining with us',orderPlaced:'Order sent successfully',grandTotal:'Grand Total',foodPrice:'Subtotal',vat7:'VAT 7%',viewReceipt:'View Receipt',itemsUnit:'items'},
- zh:{orderFood:'点餐',menuSubtitle:'选择您喜爱的菜品',viewCart:'查看购物车',priceNote:'菜品价格不含 7% 增值税',cartTitle:'购物车',yourOrder:'您的订单',checkOrder:'确认下单前请核对菜品',placeOrder:'确认并提交订单',moreFood:'继续点餐',recommended:'推荐菜品',search:'搜索菜品 / Search menu',menuCount:'道菜',noResult:'未找到菜品',noResultSub:'请尝试其他关键词或分类',extraNote:'备注',notePlaceholder:'例如：不要香菜、不要洋葱',quantity:'数量',addCart:'加入购物车',saveEdit:'保存修改',cancel:'取消',edit:'修改',remove:'删除',table:'桌号',noCart:'购物车是空的',noCartSub:'请返回菜单选择菜品',orderEmpty:'请先选择菜品',note:'备注',added:'已加入购物车',sent:'订单已提交',loading:'提交中...',orderHistory:'点餐记录',pastOrders:'历史订单',historyHint:'您在本设备上点过的所有菜品',historyPrivacy:'仅显示本设备下的订单，不会显示同桌其他客人的订单。',noHistory:'暂无点餐记录',noHistorySub:'提交订单后，记录会显示在这里',timePlaced:'下单时间',orderNo:'订单',receiptTitle:'收据',combinedReceipt:'合并收据',ordersUnit:'笔订单',dateLabel:'日期',colItem:'菜品',colAmount:'金额',thanks:'感谢惠顾，欢迎再次光临',orderPlaced:'订单提交成功',grandTotal:'应付总额',foodPrice:'菜品小计',vat7:'增值税 7%',viewReceipt:'查看收据',itemsUnit:'项'}
+ th:{orderFood:'สั่งอาหาร',menuSubtitle:'เลือกเมนูโปรดของคุณได้เลย',viewCart:'ดูตะกร้า',priceNote:'ราคาอาหารยังไม่รวมภาษีมูลค่าเพิ่มและค่าบริการ',cartTitle:'ตะกร้าอาหาร',yourOrder:'รายการอาหารของคุณ',checkOrder:'ตรวจสอบรายการก่อนยืนยันการสั่งอาหาร',placeOrder:'ยืนยันและส่งออเดอร์',moreFood:'สั่งอาหารเพิ่ม',recommended:'เมนูแนะนำ',search:'ค้นหาเมนูอาหาร / Search menu',menuCount:'เมนู',noResult:'ไม่พบเมนูอาหาร',noResultSub:'ลองค้นหาด้วยชื่ออื่นหรือเลือกหมวดหมู่',extraNote:'รายละเอียดเพิ่มเติม',notePlaceholder:'เช่น ไม่ใส่ผักชี ไม่ใส่หอมใหญ่',quantity:'จำนวน',addCart:'เพิ่มลงตะกร้า',saveEdit:'บันทึกการแก้ไข',cancel:'ยกเลิก',edit:'แก้ไข',remove:'ลบ',table:'โต๊ะ',noCart:'ยังไม่มีรายการอาหาร',noCartSub:'กลับไปเลือกเมนูที่ต้องการได้เลย',orderEmpty:'กรุณาเลือกอาหารก่อน',note:'หมายเหตุ',added:'เพิ่มอาหารลงตะกร้าแล้ว',sent:'ส่งออเดอร์แล้ว',loading:'กำลังส่ง...',orderHistory:'ประวัติการสั่งอาหาร',pastOrders:'รายการที่เคยสั่ง',historyHint:'รวมรายการอาหารทั้งหมดที่คุณสั่งจากอุปกรณ์นี้',historyPrivacy:'แสดงออเดอร์ที่สั่งจากอุปกรณ์นี้เท่านั้น เพื่อไม่เปิดเผยรายการของลูกค้าคนอื่นที่ใช้โต๊ะเดียวกัน',noHistory:'ยังไม่มีประวัติการสั่งอาหาร',noHistorySub:'เมื่อส่งคำสั่งซื้อ รายการจะปรากฏที่หน้านี้',timePlaced:'สั่งเมื่อ',orderNo:'คำสั่งซื้อ',receiptTitle:'ใบเสร็จรับเงิน',combinedReceipt:'ใบเสร็จรวมทุกออเดอร์',ordersUnit:'ออเดอร์',dateLabel:'วันที่',colItem:'รายการ',colAmount:'จำนวนเงิน',thanks:'ขอบคุณที่ใช้บริการ',orderPlaced:'ส่งออเดอร์เรียบร้อยแล้ว',grandTotal:'ยอดรวมสุทธิ',foodPrice:'ราคาอาหาร',vat:'ภาษีมูลค่าเพิ่ม',serviceCharge:'ค่าบริการ',fontSize:'ขนาดตัวอักษร',font_s:'เล็ก',font_m:'กลาง',font_l:'ใหญ่',viewReceipt:'ดูใบเสร็จ',itemsUnit:'รายการ'},
+ en:{orderFood:'Order Food',menuSubtitle:'Choose your favorites',viewCart:'View Cart',priceNote:'Menu prices exclude VAT and service charge',cartTitle:'Your Cart',yourOrder:'Your order',checkOrder:'Please check items before confirming',placeOrder:'Confirm & Send Order',moreFood:'Order More',recommended:'Recommended',search:'Search dishes / ค้นหาเมนูอาหาร',menuCount:'items',noResult:'No dishes found',noResultSub:'Try another search or category',extraNote:'Additional Notes',notePlaceholder:'e.g. No cilantro, no onion',quantity:'Quantity',addCart:'Add to Cart',saveEdit:'Save Changes',cancel:'Cancel',edit:'Edit',remove:'Remove',table:'Table',noCart:'Your cart is empty',noCartSub:'Go back and choose some food',orderEmpty:'Please select food first',note:'Note',added:'Added to cart',sent:'Order sent',loading:'Sending...',orderHistory:'Order History',pastOrders:'Your Previous Orders',historyHint:'All dishes you have ordered from this device',historyPrivacy:'Orders from this device only. Other guests’ orders at the same table are not shown.',noHistory:'No orders yet',noHistorySub:'Orders you submit will appear here',timePlaced:'Placed',orderNo:'Order',receiptTitle:'Receipt',combinedReceipt:'Combined Receipt',ordersUnit:'orders',dateLabel:'Date',colItem:'ITEM',colAmount:'AMOUNT',thanks:'Thank you for dining with us',orderPlaced:'Order sent successfully',grandTotal:'Grand Total',foodPrice:'Subtotal',vat:'VAT',serviceCharge:'Service Charge',fontSize:'Text size',font_s:'Small',font_m:'Medium',font_l:'Large',viewReceipt:'View Receipt',itemsUnit:'items'},
+ zh:{orderFood:'点餐',menuSubtitle:'选择您喜爱的菜品',viewCart:'查看购物车',priceNote:'菜品价格不含增值税及服务费',cartTitle:'购物车',yourOrder:'您的订单',checkOrder:'确认下单前请核对菜品',placeOrder:'确认并提交订单',moreFood:'继续点餐',recommended:'推荐菜品',search:'搜索菜品 / Search menu',menuCount:'道菜',noResult:'未找到菜品',noResultSub:'请尝试其他关键词或分类',extraNote:'备注',notePlaceholder:'例如：不要香菜、不要洋葱',quantity:'数量',addCart:'加入购物车',saveEdit:'保存修改',cancel:'取消',edit:'修改',remove:'删除',table:'桌号',noCart:'购物车是空的',noCartSub:'请返回菜单选择菜品',orderEmpty:'请先选择菜品',note:'备注',added:'已加入购物车',sent:'订单已提交',loading:'提交中...',orderHistory:'点餐记录',pastOrders:'历史订单',historyHint:'您在本设备上点过的所有菜品',historyPrivacy:'仅显示本设备下的订单，不会显示同桌其他客人的订单。',noHistory:'暂无点餐记录',noHistorySub:'提交订单后，记录会显示在这里',timePlaced:'下单时间',orderNo:'订单',receiptTitle:'收据',combinedReceipt:'合并收据',ordersUnit:'笔订单',dateLabel:'日期',colItem:'菜品',colAmount:'金额',thanks:'感谢惠顾，欢迎再次光临',orderPlaced:'订单提交成功',grandTotal:'应付总额',foodPrice:'菜品小计',vat:'增值税',serviceCharge:'服务费',fontSize:'字体大小',font_s:'小',font_m:'中',font_l:'大',viewReceipt:'查看收据',itemsUnit:'项'}
 };
 const L=(th,en,zh)=>state.lang==='en'?en:state.lang==='zh'?zh:th;
 const t = key => dic[state.lang][key] ?? key;
@@ -46,9 +46,14 @@ const catName = (cat,en) => (state.lang==='th'? cat : state.lang==='zh'? (ZH.cat
 const price = number => '฿'+Number(number || 0).toLocaleString('en-US',{maximumFractionDigits:2});
 const money = number => '฿'+Number(number || 0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 const round2 = n => Math.round((Number(n||0)+Number.EPSILON)*100)/100;
-/* Menu prices are PRE-VAT (exclude 7% VAT): subtotal = sum of item prices, VAT is added on top. */
-const VAT_RATE=0.07;
-const vatSplit = sum => {const subtotal=round2(sum),vat=+(subtotal*VAT_RATE).toFixed(2),grandTotal=+(subtotal+vat).toFixed(2);return {subtotal,vat,grandTotal};};
+/* Menu prices EXCLUDE VAT and service charge. Both are worked out on the food subtotal and added on top:
+   VAT = 7% of food, Service Charge = 10% of food, Grand Total = food + VAT + service charge.
+   Integer satang + round-half-up, identical to bill_charges() in server.py and billSplit() in pos.js.
+   Rates are never shown in the UI (labels read "VAT" / "Service Charge" only). */
+const VAT_RATE=7, SERVICE_RATE=10; /* percent */
+const pctOf=(cents,rate)=>Math.round(cents*rate/100); /* cents*rate is an integer, so .5 rounds half-up */
+const billSplit = sum => {const food=Math.round(Number(sum||0)*100),vat=pctOf(food,VAT_RATE),service=pctOf(food,SERVICE_RATE);
+ return {subtotal:food/100,vat:vat/100,service:service/100,grandTotal:(food+vat+service)/100};};
 const getItem = id => MENU.find(m=>m.id===id);
 const variantsOf = item => Array.isArray(item?.variants) ? item.variants : [];
 const selectedVariant = entry => {const item=getItem(entry?.itemId);const variants=variantsOf(item);return variants.find(v=>v.label===(entry?.variant||entry?.size))||variants[0]||{label:'',price:0};};
@@ -81,6 +86,7 @@ function refreshLang(){
  qa('[data-language]').forEach(el=>el.classList.toggle('active',el.dataset.language===state.lang));
  qa('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));
  $('menuSearch').placeholder=t('search');
+ applyFontSize();
  $('menuLangTH').classList.toggle('active',state.lang==='th');
  $('menuLangEN').classList.toggle('active',state.lang==='en');
  $('menuLangZH').classList.toggle('active',state.lang==='zh');
@@ -93,9 +99,21 @@ function refreshLang(){
  renderCategories();renderMenu();renderCart();if(state.order||state.receiptCombined)renderReceipt();renderHistory();refreshCartCount();
 }
 function setLang(lang){state.lang=lang; refreshLang();}
+/* ---- Accessibility: text size (S = original, M, L). Persisted per device; CSS scales via --font-scale. ---- */
+const FONT_SIZES=['s','m','l'],FONT_KEY='sdp_font_size';
+let fontSize=(()=>{try{const v=localStorage.getItem(FONT_KEY);return FONT_SIZES.includes(v)?v:'s';}catch{return 's';}})();
+function applyFontSize(){
+ if(fontSize==='s')delete document.documentElement.dataset.fontSize;else document.documentElement.dataset.fontSize=fontSize;
+ const label=t('fontSize')+': '+t('font_'+fontSize);
+ $('fontToggle').setAttribute('aria-label',label);$('fontToggle').title=label;
+}
+function cycleFontSize(){
+ fontSize=FONT_SIZES[(FONT_SIZES.indexOf(fontSize)+1)%FONT_SIZES.length];try{localStorage.setItem(FONT_KEY,fontSize);}catch{}
+ applyFontSize();toast(t('fontSize')+': '+t('font_'+fontSize));
+}
 function renderCategories(){
  const current=state.category;
- $('categoryList').innerHTML=[{key:'recommended',label:L('แนะนำ','Recommended','推荐')}, ...categories.map(cat=>({key:cat,label:catName(cat,MENU.find(x=>x.category===cat)?.categoryEn)}))].map(c=>`<button class="category-btn ${current===c.key?'active':''}" data-cat="${esc(c.key)}" type="button">${esc(c.label)}</button>`).join('');
+ $('categoryList').innerHTML=[{key:'recommended',label:L('เมนูแนะนำ','Recommended','推荐')}, ...categories.map(cat=>({key:cat,label:catName(cat,MENU.find(x=>x.category===cat)?.categoryEn)}))].map(c=>`<button class="category-btn ${current===c.key?'active':''}" data-cat="${esc(c.key)}" type="button">${esc(c.label)}</button>`).join('');
 }
 const qtyOf=id=>state.cart.filter(c=>c.itemId===id).reduce((n,c)=>n+c.quantity,0);
 const tagsOf=id=>(TAGS.signature.includes(id)?'<span class="tag tag-sig">✨ Signature</span>':'')+(TAGS.mustTry.includes(id)?'<span class="tag tag-hot">🔥 Must Try</span>':'');
@@ -190,8 +208,8 @@ function describe(c){let a=[];const item=getItem(c.itemId),v=selectedVariant(c);
  return a.join(' · ');
 }
 function renderCart(){
- const cartSplit=vatSplit(amountTotal());
- $('cartTotal').textContent=money(cartSplit.subtotal);$('cartVat').textContent=money(cartSplit.vat);$('cartGrand').textContent=money(cartSplit.grandTotal);
+ const cartSplit=billSplit(amountTotal());
+ $('cartTotal').textContent=money(cartSplit.subtotal);$('cartVat').textContent=money(cartSplit.vat);$('cartService').textContent=money(cartSplit.service);$('cartGrand').textContent=money(cartSplit.grandTotal);
  const n=$('cartItems');
  n.innerHTML=state.cart.length?state.cart.map(c=>{const item=getItem(c.itemId);if(!item)return '';
  const opts=describe(c);
@@ -284,7 +302,7 @@ function renderReceipt(){
  const orders=combined?historyOrders():(state.order?[state.order]:[]);
  if(!orders.length)return;
  const lines=combined?mergeLines(orders):billableLines(orders[0]);
- const split=vatSplit(lines.reduce((n,it)=>n+linePrice(it)*(it.quantity||1),0));
+ const split=billSplit(lines.reduce((n,it)=>n+linePrice(it)*(it.quantity||1),0));
  $('receiptHeading').textContent=t(combined?'combinedReceipt':'orderPlaced');
  $('receiptMetaTable').textContent=table;
  $('receiptMetaOrder').textContent=combined?orders.length+' '+t('ordersUnit'):'#'+String(orders[0].id);
@@ -292,6 +310,7 @@ function renderReceipt(){
  $('receiptItems').innerHTML=lines.map(it=>{const qty=it.quantity||1,extra=lineExtras(it);return `<div class="receipt-line"><div class="receipt-line-main"><b>${esc(qty)} × ${lineName(it)}</b>${extra?`<small>${extra}</small>`:''}</div><span>${money(linePrice(it)*qty)}</span></div>`;}).join('');
  $('receiptFood').textContent=money(split.subtotal);
  $('receiptVat').textContent=money(split.vat);
+ $('receiptService').textContent=money(split.service);
  $('receiptGrand').textContent=money(split.grandTotal);
 }
 function renderHistory(){
@@ -304,8 +323,8 @@ function renderHistory(){
   return `<article class="history-order-card"><div class="history-card-head"><div><div class="history-order-id">${t('orderNo')} #${esc(String(o.id))}</div><div class="history-time">${t('timePlaced')} ${esc(dateText(o.created_at))}</div></div><strong class="history-order-total">${money(total)}</strong></div>
  <div class="history-dish-list">${billableLines(o).map(it=>{const qty=it.quantity||1,extra=lineExtras(it);return `<div class="history-line"><span class="history-line-name">${esc(qty)} × ${lineName(it)}${extra?`<small>${extra}</small>`:''}</span><span class="history-line-price">${money(linePrice(it)*qty)}</span></div>`;}).join('')}</div></article>`;
  }).join('');
- const hs=vatSplit(totalSum);
- $('historyTotalSum').textContent=money(hs.subtotal);$('historyVat').textContent=money(hs.vat);$('historyGrand').textContent=money(hs.grandTotal);
+ const hs=billSplit(totalSum);
+ $('historyTotalSum').textContent=money(hs.subtotal);$('historyVat').textContent=money(hs.vat);$('historyService').textContent=money(hs.service);$('historyGrand').textContent=money(hs.grandTotal);
  $('historyTotalCard').hidden=false;
 }
 async function refreshHistory(){
@@ -370,6 +389,7 @@ function wire(){
  $('menuLangTH').addEventListener('click',()=>setLang('th'));
  $('menuLangEN').addEventListener('click',()=>setLang('en'));
  $('menuLangZH').addEventListener('click',()=>setLang('zh'));
+ $('fontToggle').addEventListener('click',cycleFontSize);
  $('categoryList').addEventListener('click',e=>{const el=e.target.closest('[data-cat]');if(!el)return;selectCategory(el.dataset.cat);});
  $('menuSearch').addEventListener('input',e=>{state.search=e.target.value;$('clearSearch').hidden=!state.search;renderMenu();});
  $('clearSearch').addEventListener('click',()=>{state.search='';$('menuSearch').value='';$('clearSearch').hidden=true;renderMenu();});
@@ -394,6 +414,6 @@ function wire(){
  document.addEventListener('keydown',e=>{if(e.key!=='Escape'||state.tableClosed)return;if(!$('sheetOverlay').hidden)closeSheet();else if(state.screen==='cartScreen')show('menuScreen');});
 }
 if(state.order && !state.history.some(o=>String(o.id)===String(state.order.id)))rememberOrder(state.order);
-wire();refreshLang();startTablePoll();
+applyFontSize();wire();refreshLang();startTablePoll();
 if(state.order){state.demo=!!state.order._demo;}
 })();
