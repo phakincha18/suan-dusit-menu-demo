@@ -42,6 +42,11 @@ const dic={
 };
 const L=(th,en,zh)=>state.lang==='en'?en:state.lang==='zh'?zh:th;
 const t = key => dic[state.lang][key] ?? key;
+/* Chosen option of a dish: sizes (S/M/L/XL) or style (hot / iced / blended). 'ราคาเดียว' = single price, nothing to show. */
+const SIZE_LABELS=['S','M','L','XL'];
+const VARIANT_I18N={'ร้อน':['ร้อน','Hot','热'],'เย็น':['เย็น','Iced','冰'],'ปั่น':['ปั่น','Blended','冰沙']};
+const variantName=label=>VARIANT_I18N[label]?L(...VARIANT_I18N[label]):label;
+const variantText=label=>!label||label==='ราคาเดียว'?'':(SIZE_LABELS.includes(label)?L('ขนาด','Size','规格'):L('แบบ','Type','类型'))+': '+variantName(label);
 const name = item => (state.lang==='en'? item.en : state.lang==='zh'? (ZH.items[item.id]||item.en) : item.th);
 const subName = item => (state.lang==='th'? item.en : item.th);
 const catName = (cat,en) => (state.lang==='th'? cat : state.lang==='zh'? (ZH.categories[cat]||en||cat) : (en||cat));
@@ -189,7 +194,8 @@ function openItemModal(itemId, key){
  const c=state.custom;
  const tags=tagsOf(item.id);
  let html=`<div class="sheet-title-row"><div>${tags?`<div class="sheet-badge">${tags}</div>`:''}<h2 id="sheetTitle">${titleFallback(item)}</h2><p>${esc(subName(item))}</p></div><strong id="sheetPrice" class="price">${price(unitPrice(c))}</strong></div><div class="sheet-divider"></div>`;
- if(variants.length>1)html+=`<section class="size-options" aria-label="${esc(L('เลือกขนาด','Select size','选择规格'))}"><div class="option-title">${esc(L('เลือกขนาด','Select size','选择规格'))}</div><div class="size-pills">${variants.map(v=>`<button type="button" class="size-pill${v.label===c.variant?' active':''}" data-variant="${esc(v.label)}">${esc(v.label)} <span>${price(v.price)}</span></button>`).join('')}</div><div class="sheet-divider"></div></section>`;
+ const optHead=variants.every(v=>SIZE_LABELS.includes(v.label))?L('เลือกขนาด','Select size','选择规格'):L('เลือกแบบ','Choose type','选择类型');
+ if(variants.length>1)html+=`<section class="size-options" aria-label="${esc(optHead)}"><div class="option-title">${esc(optHead)}</div><div class="size-pills">${variants.map(v=>`<button type="button" class="size-pill${v.label===c.variant?' active':''}" data-variant="${esc(v.label)}">${esc(variantName(v.label))} <span>${price(v.price)}</span></button>`).join('')}</div><div class="sheet-divider"></div></section>`;
  html+=`<div class="option-block"><label for="customNote" class="option-title">${ICON.edit} ${t('extraNote')}</label><textarea class="custom-input" id="customNote" maxlength="300" placeholder="${esc(t('notePlaceholder'))}">${esc(c.note)}</textarea></div>`;
  const actions=`<div class="sheet-qty-row"><strong>${t('quantity')}</strong><div class="qty-controls"><button id="sheetMinus" type="button" aria-label="−">−</button><span id="sheetQty">${c.quantity}</span><button id="sheetPlus" type="button" aria-label="+">+</button></div></div><button type="button" class="primary-btn" id="sheetAddBtn">${t(key?'saveEdit':'addCart')} • ${price(unitPrice(c)*c.quantity)}</button>`;
  sheet(html,actions);
@@ -206,7 +212,7 @@ function saveCustom(){
  persistCart();refreshCartCount();renderCart();closeSheet();toast(t('added'));
 }
 function describe(c){let a=[];const item=getItem(c.itemId),v=selectedVariant(c);
- if(variantsOf(item).length>1&&v.label)a.push(v.label);
+ const vt=variantsOf(item).length>1?variantText(v.label):'';if(vt)a.push(vt);
  if(c.note)a.push(t('note')+': '+c.note);
  return a.join(' · ');
 }
@@ -277,6 +283,7 @@ async function placeOrder(){
 function lineName(it){const item=getItem(it.id);return esc(state.lang==='en'?(it.nameEn||item?.en||it.nameTh||it.id):state.lang==='zh'?(ZH.items[it.id]||it.nameEn||item?.en||it.nameTh||it.id):(it.nameTh||item?.th||it.nameEn||it.id));}
 function lineExtras(it){
  const opts=[];
+ const vt=variantText(it.variant);if(vt)opts.push(vt);
  if(it.note)opts.push(t('note')+': '+it.note);
  return esc(opts.join(' · '));
 }
