@@ -232,7 +232,7 @@ html[data-font-size="s"] .font-btn,html[data-font-size="l"] .font-btn{border-col
 
 /* text-only editorial dish cards */
 .dish-list{display:grid;gap:10px}
-.dish{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:stretch;gap:12px;padding:16px 14px 16px 18px;border-radius:var(--r-card);background:var(--pearl);border:1px solid var(--hair);box-shadow:var(--lift)}
+.dish{display:grid;grid-template-columns:84px minmax(0,1fr) auto;align-items:stretch;gap:12px;padding:12px 14px 12px 12px;border-radius:var(--r-card);background:var(--pearl);border:1px solid var(--hair);box-shadow:var(--lift)}
 .dish-open{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;min-width:0}
 .dish-open .tags{margin-bottom:3px}
 .dish-name{font-size:calc(16.5px * var(--font-scale));font-weight:700;line-height:1.38;color:var(--ink);overflow-wrap:anywhere}
@@ -447,3 +447,12 @@ html[data-font-size="s"] .font-btn,html[data-font-size="l"] .font-btn{border-col
 .closed-card h1{font-family:var(--serif);font-size:calc(26px * var(--font-scale));font-weight:600;line-height:1.3}
 .closed-card p{font-size:calc(16px * var(--font-scale));line-height:1.6;color:rgba(250,248,245,.88)}
 .closed-table{margin-top:4px;padding:6px 16px;border-radius:var(--pill);border:1px solid rgba(198,156,109,.55);color:var(--gold);font-size:calc(13.5px * var(--font-scale));font-weight:600}
+
+/* photo thumbnail inside each dish card */
+.dish-photo{position:relative;display:block;width:84px;height:84px;align-self:center;border-radius:var(--r-sm);overflow:hidden;background:radial-gradient(90% 90% at 30% 20%,#2C5A44 0%,var(--emerald) 55%,var(--emerald-3) 100%)}
+.dish-photo::before{content:attr(data-mono);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-weight:500;font-size:calc(34px * var(--font-scale));color:var(--gold-soft);opacity:.95}
+.dish-photo img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
+
+/* clear order history */
+.clear-history-btn{display:block;margin:14px auto 0;padding:10px 18px;border-radius:var(--pill);border:1px solid var(--hair);background:transparent;color:#a33a2f;font-size:calc(13.5px * var(--font-scale));font-weight:600}
+.clear-history-btn:active{transform:scale(.97)}
