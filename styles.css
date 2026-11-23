@@ -204,11 +204,11 @@ html[data-font-size="s"] .font-btn,html[data-font-size="l"] .font-btn{border-col
 @keyframes pop{from{transform:scale(.6);opacity:.3}}
 
 /* Recommended showcase — the only place food photos appear */
-.show-rail{display:flex;gap:14px;overflow-x:auto;margin:0 calc(var(--gutter) * -1);padding:4px var(--gutter) 18px;scroll-snap-type:x mandatory;scroll-padding:0 var(--gutter);scrollbar-width:none}
+.show-rail{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-auto-columns:min(200px,56vw);gap:12px;overflow-x:auto;margin:0 calc(var(--gutter) * -1);padding:4px var(--gutter) 18px;scroll-snap-type:x mandatory;scroll-padding:0 var(--gutter);scrollbar-width:none}
 .show-rail::-webkit-scrollbar{display:none}
-.show-card{flex:0 0 min(236px,70vw);scroll-snap-align:start;display:flex;flex-direction:column;background:var(--pearl);border:1px solid var(--hair);border-radius:var(--r-card);box-shadow:var(--lift);overflow:hidden}
+.show-card{min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;background:var(--pearl);border:1px solid var(--hair);border-radius:var(--r-card);box-shadow:var(--lift);overflow:hidden}
 .show-open{display:flex;flex-direction:column;text-align:left;flex:1}
-.show-photo{position:relative;display:block;height:156px;overflow:hidden;
+.show-photo{position:relative;display:block;height:124px;overflow:hidden;
   background:radial-gradient(90% 90% at 30% 20%,#2C5A44 0%,var(--emerald) 55%,var(--emerald-3) 100%)}
 .show-photo::before{content:attr(data-mono);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-weight:500;font-size:calc(64px * var(--font-scale));color:var(--gold-soft);opacity:.95}
 .show-photo::after{content:'';position:absolute;left:50%;top:50%;width:112px;height:112px;margin:-56px 0 0 -56px;border-radius:50%;border:1px solid rgba(228,203,168,.45);box-shadow:0 0 0 10px rgba(228,203,168,.06)}
