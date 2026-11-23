@@ -24,12 +24,12 @@ const session=(typeof storedSession==='string' && /^[a-f0-9-]{16,64}$/.test(stor
 save('sdp_session_'+table,session);
 const state = {tableClosed:false,lang:(['en','zh'].includes(queryParams.get('lang'))?queryParams.get('lang'):'th'),screen:'splashScreen',category:'recommended',search:'',cart:load('sdp_cart_'+table,[]),editKey:null,custom:null,order:load('sdp_last_order_'+table,null),history:load('sdp_order_history_'+table,[]),demo:false,busy:false};
 const categories = [...new Set(MENU.map(m=>m.category))];
-const RECOMMENDED=['AP-01','AP-02','SA-05','OD-01','NO-01','DF-01','SF-01','CU-01','HS-01','IN-01','DE-01','BE-01'];
+const RECOMMENDED=['AP-01','AP-03','AP-04','AP-06','AP-10','SA-04','SA-09','SA-10','SA-16','SA-17','SA-20','OD-02','OD-11','OD-16','OD-18','OD-25','OD-31','NO-01','NO-05','NO-07','NO-08','NO-18','NO-21','NO-26','NO-31','NO-32','NO-35','NO-39','DF-04','DF-05','DF-06','DF-07','DF-08','DF-09','DF-10','DF-12','SF-01','SF-12','SF-13','SF-17','SF-18','SF-26','SF-27','SF-28','SF-29','CU-01','CU-02','CU-07','CU-10','CU-13','SO-01','SO-02','SO-03','SO-05','DI-01','DI-02','DI-03','DI-04','DI-05','DI-06','HS-01','HS-07','HS-08','HS-09','HS-13','HS-21','HS-24','IN-01','IN-02','IN-08','IN-10','IN-14','IN-15','IN-16','IN-17','IN-24','IN-27','DE-01','DE-03','DE-04','DE-05','DE-06','DE-07','DE-10','DE-11','DE-12','BE-06','BE-09','BE-15','BE-22','BE-25'];
 /* Presentation only (no effect on orders/prices) — edit freely.
    Tags shown on dish cards; photos appear ONLY on the Recommended showcase:
    drop a file named <menu id>.jpg into assets/food/ (e.g. assets/food/AP-01.jpg).
    Until a photo exists the card shows an emerald plate with a gold monogram. */
-const TAGS={signature:['AP-01','AP-02','HS-01','CU-01'],mustTry:['NO-01','OD-01','SA-05','DE-01']};
+const TAGS={signature:['AP-01','HS-01','CU-01','DE-01'],mustTry:['NO-01','OD-18','SA-16','SF-01']};
 const PHOTO_DIR='assets/food/';
 const PHOTO_EXT={};
 const photoPath=id=>PHOTO_DIR+id+'.'+(PHOTO_EXT[id]||'jpg');
